@@ -7,11 +7,19 @@ import { useEffect, useRef, useState } from 'react'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  // const [products, setProducts] = useState<
+  //   { id: string; properties: { id: string }[] }[]
+  // >([])
   const [products, setProducts] = useState<
-    { id: string; properties: { id: string }[] }[]
+    { id: string; name: string; createdAt: string }[]
   >([])
+  // useEffect(() => {
+  //   fetch('/api/get-items')
+  //     .then((res) => res.json())
+  //     .then((data) => setProducts(data.items))
+  // }, [])
   useEffect(() => {
-    fetch('/api/get-items')
+    fetch('/api/get-products')
       .then((res) => res.json())
       .then((data) => setProducts(data.items))
   }, [])
@@ -82,8 +90,15 @@ export default function Home() {
         </div>
 
         <div>
-          <p>Product List</p>
+          <p>&lt;Product List&gt;</p>
           {products &&
+            products.map((item) => (
+              <div key={item.id}>
+                {item.name}
+                <span>{item.createdAt}</span>
+              </div>
+            ))}
+          {/* {products &&
             products.map((item) => {
               return (
                 <div key={item.id}>
@@ -111,7 +126,7 @@ export default function Home() {
                   <br />
                 </div>
               )
-            })}
+            })} 노션에서 사용하던 data 봉인 */}
         </div>
       </main>
     </>
