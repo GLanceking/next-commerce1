@@ -3,6 +3,8 @@ import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
 import { useEffect, useRef, useState } from 'react'
+import { css } from '@emotion/react'
+import Button from '@components/Button'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -48,8 +50,25 @@ export default function Home() {
             <code className={styles.code}>pages/index.tsx</code>
           </p>
 
-          <input ref={inputRef} type="text" placeholder="name" />
-          <button onClick={handleClick}>Add Jacket</button>
+          <input
+            className="placeholder:italic placeholder:text-slate-400 block bg-white w-72 border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+            ref={inputRef}
+            type="text"
+            placeholder="name"
+          />
+          <button
+            css={css`
+              background-color: #666666;
+              padding: 16px;
+              border-radius: 8px;
+              color: white;
+            `}
+            onClick={handleClick}
+          >
+            Add Jacket
+          </button>
+          <Button onClick={handleClick}>Add Jacket2</Button>
+
           <div>
             <a
               href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
